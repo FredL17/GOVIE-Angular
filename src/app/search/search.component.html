@@ -1,0 +1,7 @@
+<h1>GOVIE</h1>
+<div class="d-flex align-items-center justify-content-center">
+    <form class="form-inline" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+        <input class="form-control" type="search" aria-label="Search" name="searchQuery" ngModel required>
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+</div>

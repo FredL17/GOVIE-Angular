@@ -1,0 +1,17 @@
+div {
+    height: 30%;
+}
+
+.form-control {
+    width: 30rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 6rem;
+    margin-top: 6rem;
+}
+
+button {
+    margin-left: 10px;
+}
