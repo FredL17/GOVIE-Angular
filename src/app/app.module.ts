@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
-import { MoviesComponent } from './movies/movies.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppComponent,
     HeaderComponent,
     SearchComponent,
-    MoviesComponent
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatProgressSpinnerModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

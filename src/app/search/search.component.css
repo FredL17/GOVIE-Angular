@@ -1,17 +1,21 @@
-div {
-    height: 30%;
-}
-
 .form-control {
-    width: 30rem;
+    width: 28rem;
 }
 
-h1 {
-    text-align: center;
-    font-size: 6rem;
-    margin-top: 6rem;
-}
 
 button {
     margin-left: 10px;
 }
+
+#logo {
+    text-align: center;
+    height: 25%;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+#logo img{
+    height: 100%;
+}
+
+

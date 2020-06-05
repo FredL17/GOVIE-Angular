@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms'
-import { MoviesService } from '../services/movies.service';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +9,10 @@ import { MoviesService } from '../services/movies.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private moviesService: MoviesService) { }
+  hasResults: boolean = false;
+  @Output() loading: EventEmitter<boolean> = new EventEmitter();
+
+  constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +21,8 @@ export class SearchComponent implements OnInit {
     if(!searchForm.valid) {
       console.log("Please enter something!");
     }else {
-      this.moviesService.getMovies(searchForm.value.title);
+      this.loading.emit(true);
+      this.searchService.getMovies(searchForm.value.title);
       searchForm.reset();
     }
   }
