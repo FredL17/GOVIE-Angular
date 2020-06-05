@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { result } from '../models/result.model';
-import { Subject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class SearchService {
   private searchResults: result[] = [];
   private totalResults: number = 0;
   private hasResults: boolean = false;
-  private searchResultsSubject = new Subject<any>(); 
+  private searchResultsSubject = new BehaviorSubject<any>(null); 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getMovies(title: string): void {
     this.http.get<any>(this.url + `apiKey=${this.apiKey}` + `&s=${title}`).subscribe(res => {
@@ -28,6 +29,7 @@ export class SearchService {
         this.searchResults = res.Search;
         this.totalResults = res.totalResults;
         this.searchResultsSubject.next({hasResults: this.hasResults, searchResults: this.searchResults, totalResults: this.totalResults });
+        this.router.navigate(['results']);
       } 
     });
   }

@@ -1,19 +1,19 @@
 <ng-container *ngFor="let result of searchResults; let i = index">
     <div *ngIf="i % 3 == 0" class="row my-3 w-50 mx-auto">
-        <mat-card class="col-md-4">
-            <img mat-card-image [src]="result.posterURL">
+        <mat-card class="col-md-3 mx-3">
+            <img mat-card-image [src]="result.posterURL" default="assets/images/default-img.jpg">
             <mat-card-content>
                 <p class="text-center">{{result.title}}</p>
             </mat-card-content>
         </mat-card>
-        <mat-card *ngIf="i + 1 < searchResults.length" class="col-md-4">
-            <img mat-card-image [src]="searchResults[i + 1].posterURL" [alt]="searchResults[i + 1].title">
+        <mat-card *ngIf="i + 1 < searchResults.length" class="col-md-3 mx-3">
+            <img mat-card-image [src]="searchResults[i + 1].posterURL" [default]="defaultImageURL">
             <mat-card-content>
                 <p class="text-center">{{searchResults[i + 1].title}}</p>
             </mat-card-content>
         </mat-card>
-        <mat-card *ngIf="i + 2 < searchResults.length" class="col-md-4">
-            <img mat-card-image [src]="searchResults[i + 2].posterURL" [alt]="searchResults[i + 2].title">
+        <mat-card *ngIf="i + 2 < searchResults.length" class="col-md-3 mx-3">
+            <img mat-card-image [src]="searchResults[i + 2].posterURL" [default]="defaultImageURL">
             <mat-card-content>
                 <p class="text-center">{{searchResults[i + 2].title}}</p>
             </mat-card-content>

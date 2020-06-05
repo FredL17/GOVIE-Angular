@@ -9,8 +9,7 @@ import { SearchService } from '../services/search.service';
 })
 export class SearchComponent implements OnInit {
 
-  hasResults: boolean = false;
-  @Output() loading: EventEmitter<boolean> = new EventEmitter();
+  @Output() searchPerformed = new EventEmitter<void>();
 
   constructor(private searchService: SearchService) { }
 
@@ -21,8 +20,8 @@ export class SearchComponent implements OnInit {
     if(!searchForm.valid) {
       console.log("Please enter something!");
     }else {
-      this.loading.emit(true);
       this.searchService.getMovies(searchForm.value.title);
+      this.searchPerformed.emit();
       searchForm.reset();
     }
   }
