@@ -1,22 +1,37 @@
-<ng-container *ngFor="let result of searchResults; let i = index">
-    <div *ngIf="i % 3 == 0" class="row my-3 w-50 mx-auto">
-        <mat-card class="col-md-3 mx-3">
-            <img mat-card-image [src]="result.posterURL" default="assets/images/default-img.jpg">
-            <mat-card-content>
-                <p class="text-center">{{result.title}}</p>
-            </mat-card-content>
-        </mat-card>
-        <mat-card *ngIf="i + 1 < searchResults.length" class="col-md-3 mx-3">
-            <img mat-card-image [src]="searchResults[i + 1].posterURL" [default]="defaultImageURL">
-            <mat-card-content>
-                <p class="text-center">{{searchResults[i + 1].title}}</p>
-            </mat-card-content>
-        </mat-card>
-        <mat-card *ngIf="i + 2 < searchResults.length" class="col-md-3 mx-3">
-            <img mat-card-image [src]="searchResults[i + 2].posterURL" [default]="defaultImageURL">
-            <mat-card-content>
-                <p class="text-center">{{searchResults[i + 2].title}}</p>
-            </mat-card-content>
-        </mat-card>
-    </div>
+<!-- spinner -->
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center h-75">
+    <mat-spinner></mat-spinner>
+</div>
+
+<!-- search results -->
+<ng-container *ngIf="!isLoading">
+    <ng-container *ngFor="let result of resultsToDisplay; let i = index">
+        <div *ngIf="i % 3 == 0" class="row my-3 w-50 mx-auto">
+            <mat-card class="col-md-3 mx-3">
+                <img mat-card-image [src]="result.posterURL" default="assets/images/default-img.jpg">
+                <mat-card-content>
+                    <p class="text-center">{{result.title}}</p>
+                </mat-card-content>
+            </mat-card>
+            <mat-card *ngIf="i + 1 < resultsToDisplay.length" class="col-md-3 mx-3">
+                <img mat-card-image [src]="resultsToDisplay[i + 1].posterURL" [default]="defaultImageURL">
+                <mat-card-content>
+                    <p class="text-center">{{searchResults[i + 1].title}}</p>
+                </mat-card-content>
+            </mat-card>
+            <mat-card *ngIf="i + 2 < resultsToDisplay.length" class="col-md-3 mx-3">
+                <img mat-card-image [src]="resultsToDisplay[i + 2].posterURL" [default]="defaultImageURL">
+                <mat-card-content>
+                    <p class="text-center">{{searchResults[i + 2].title}}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-container>
 </ng-container>
+
+<!-- paginator -->
+<div *ngIf="!isLoading" class="d-flex justify-content-center">
+    <mat-paginator [length]="searchResults.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="onChangePage($event)">
+    </mat-paginator>
+</div>

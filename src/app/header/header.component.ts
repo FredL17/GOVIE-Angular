@@ -7,15 +7,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() newSearch = new EventEmitter<void>();
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getNewSearch(): void {
-    this.newSearch.emit();
   }
 
 }

@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { ResultsComponent } from './results/results.component';
 import { ImagePreloadDirective } from './directives/imagePreload.directive';
 
@@ -34,10 +35,12 @@ import { ImagePreloadDirective } from './directives/imagePreload.directive';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
     FormsModule,
     HttpClientModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

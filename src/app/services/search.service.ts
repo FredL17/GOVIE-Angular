@@ -13,7 +13,6 @@ export class SearchService {
   private url: string = "http://www.omdbapi.com/?";
   private searchResults: result[] = [];
   private totalResults: number = 0;
-  private hasResults: boolean = false;
   private searchResultsSubject = new BehaviorSubject<any>(null); 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -24,12 +23,21 @@ export class SearchService {
         console.log(res.Error);
       }
       else {
-        console.log(res);
-        this.hasResults = true;
-        this.searchResults = res.Search;
+        this.searchResults = res.Search.map((result: any) => {
+          return {
+            title: result.Title,
+            year: result.Year,
+            type: result.Type,
+            posterURL: result.Poster,
+            imdbId: result.imdbID
+          };
+        });
         this.totalResults = res.totalResults;
-        this.searchResultsSubject.next({hasResults: this.hasResults, searchResults: this.searchResults, totalResults: this.totalResults });
-        this.router.navigate(['results']);
+        this.searchResultsSubject.next({
+          searchResults: this.searchResults, 
+          totalResults: this.totalResults
+        });
+        this.router.navigate(['/','results']);
       } 
     });
   }

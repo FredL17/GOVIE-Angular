@@ -1,7 +1,9 @@
-<div id="logo">
+<!-- search page logo -->
+<div id="logo" class="text-center my-3 h-25">
     <img src="assets/images/logo.png" class="img-responsive" alt="GOVIE Logo">
 </div>
 
+<!-- search form -->
 <div class="mx-auto w-50">
     <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
         <input class="form-control" type="search" aria-label="Search" name="title" ngModel required>
