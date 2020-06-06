@@ -21,4 +21,8 @@ export class AppComponent{
     this.searchPerformed = true;
   }
 
+  onNewSearch(): void {
+    this.searchPerformed = false;
+  }
+
 }
